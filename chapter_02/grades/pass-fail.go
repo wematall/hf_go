@@ -2,6 +2,10 @@ package main
 
 import "fmt"
 
+// at this example some student has a grade after exam
+// if grade >= 60 student pass exam
+// if grade < 60 student need take exam again
+
 func main() {
 	grade := 59
 
