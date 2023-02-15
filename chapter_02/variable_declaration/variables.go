@@ -12,4 +12,9 @@ func main() {
 
 	fmt.Println(a, b)
 
+	// short declaration
+	c := "Solar system"
+	c, d := "Hello", "world"
+
+	fmt.Println(c, d)
 }
