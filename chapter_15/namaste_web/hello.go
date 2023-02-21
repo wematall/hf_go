@@ -16,8 +16,13 @@ func hindiHandler(writer http.ResponseWriter, request *http.Request) {
 	write(writer, "Namaste web!")
 }
 
+func frenchHandler(writer http.ResponseWriter, request *http.Request) {
+	write(writer, "Salute web!")
+}
+
 func main() {
 	http.HandleFunc("/namaste", hindiHandler)
+	http.HandleFunc("/salute", frenchHandler)
 	err := http.ListenAndServe("localhost:8080", nil)
 	log.Fatal(err)
 }
