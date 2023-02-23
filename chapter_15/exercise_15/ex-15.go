@@ -20,8 +20,13 @@ func d(writer http.ResponseWriter, request *http.Request) {
 	write(writer, "z")
 }
 
+func e(writer http.ResponseWriter, request *http.Request) {
+	write(writer, "x")
+}
+
 func main() {
 	http.HandleFunc("/b", d)
+	http.HandleFunc("/c", e)
 	err := http.ListenAndServe("localhost:4567", nil)
 	log.Fatal(err)
 }
