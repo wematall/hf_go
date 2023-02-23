@@ -24,9 +24,15 @@ func e(writer http.ResponseWriter, request *http.Request) {
 	write(writer, "x")
 }
 
+func f(writer http.ResponseWriter, request *http.Request) {
+	write(writer, "y")
+}
+
 func main() {
-	http.HandleFunc("/b", d)
-	http.HandleFunc("/c", e)
+	http.HandleFunc("/a", f) // localhost:4567/a  answer: y
+	http.HandleFunc("/b", d) // localhost:4567/b  answer: z
+	http.HandleFunc("/c", e) // localhost:4567/c  answer: x
+
 	err := http.ListenAndServe("localhost:4567", nil)
 	log.Fatal(err)
 }
