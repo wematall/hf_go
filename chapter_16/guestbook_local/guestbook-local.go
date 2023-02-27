@@ -13,9 +13,9 @@ func check(err error) {
 }
 
 func main() {
-	text := "Here's my template!\n"
-	tmpl, err := template.New("test").Parse(text)
+	templateText := "Template start\nAction: {{.}}\nTemplate end\n"
+	tmpl, err := template.New("test").Parse(templateText)
 	check(err)
-	err = tmpl.Execute(os.Stdout, nil)
+	err = tmpl.Execute(os.Stdout, "ABC")
 	check(err)
 }
