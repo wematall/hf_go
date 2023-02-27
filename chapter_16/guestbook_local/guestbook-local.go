@@ -18,4 +18,6 @@ func main() {
 	check(err)
 	err = tmpl.Execute(os.Stdout, "ABC")
 	check(err)
+	err = tmpl.Execute(os.Stdout, 42)
+	check(err)
 }
