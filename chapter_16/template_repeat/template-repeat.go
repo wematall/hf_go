@@ -22,4 +22,7 @@ func executeTemplate(text string, data interface{}) {
 func main() {
 	templateText := "Before loop: {{.}}\n{{range .}}In loop: {{.}}\n{{end}}After loop: {{.}}\n"
 	executeTemplate(templateText, []string{"do", "re", "mi"})
+
+	templateText = "Prices:\n{{range .}}${{.}}\n{{end}}"
+	executeTemplate(templateText, []float64{1.25, 0.99, 27})
 }
