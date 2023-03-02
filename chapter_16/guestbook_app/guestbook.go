@@ -45,6 +45,13 @@ func viewHandler(writer http.ResponseWriter, request *http.Request) {
 	check(err)
 }
 
+func newHandler(writer http.ResponseWriter, request *http.Request) {
+	html, err := template.ParseFiles("new.html")
+	check(err)
+	err = html.Execute(writer, nil)
+	check(err)
+}
+
 type Guestbook struct {
 	SignatureCount int
 	Signatures     []string
@@ -52,6 +59,7 @@ type Guestbook struct {
 
 func main() {
 	http.HandleFunc("/guestbook", viewHandler)
+	http.HandleFunc("/guestbook/new", newHandler)
 	err := http.ListenAndServe("localhost:4567", nil)
 	log.Fatal(err)
 }
