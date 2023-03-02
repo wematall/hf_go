@@ -36,8 +36,18 @@ func viewHandler(writer http.ResponseWriter, request *http.Request) {
 	signatures := getStrings("signatures.txt")
 	fmt.Printf("%#v\n", signatures)
 	html, err := template.ParseFiles("view.html")
-	err = html.Execute(writer, nil)
+
+	guestbook := Guestbook{
+		SignatureCount: len(signatures),
+		Signatures:     signatures,
+	}
+	err = html.Execute(writer, guestbook)
 	check(err)
+}
+
+type Guestbook struct {
+	SignatureCount int
+	Signatures     []string
 }
 
 func main() {
